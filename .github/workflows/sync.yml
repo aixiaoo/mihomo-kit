@@ -134,10 +134,15 @@ jobs:
             echo '```' >> $GITHUB_STEP_SUMMARY
           fi
 
+      - name: 🔖 Set commit message
+        id: commit_msg
+        run: |
+          echo "message=🤖 auto-update: sync rules at $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
+
       - name: ⬆️ Commit and Push
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🤖 auto-update: sync rules at $(TZ=UTC-8 date +'%Y-%m-%d %H:%M')"
+          commit_message: ${{ steps.commit_msg.outputs.message }}
           commit_user_name: "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"
           file_pattern: "output/ README.md"
