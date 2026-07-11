@@ -139,13 +139,26 @@ jobs:
         run: |
           echo "message=🤖 auto-update: sync rules at $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
 
-      - name: ⬆️ Commit and Push
-        uses: stefanzweifel/git-auto-commit-action@v6
-        with:
-          commit_message: ${{ steps.commit_msg.outputs.message }}
-          commit_user_name: "github-actions[bot]"
-          commit_user_email: "github-actions[bot]@users.noreply.github.com"
-          file_pattern: "output/ README.md"
+      - name: ⬆️ Push output to main branch (orphan)
+        run: |
+          cd ${{ github.workspace }}
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          # 备份生成的输出文件
+          cp -r output/ /tmp/mihomo_output/
+          cp README.md /tmp/mihomo_readme.md
+          # 创建 orphan 分支（无历史记录）
+          git checkout --orphan main-tmp
+          # 清除所有追踪文件
+          git rm -rf . > /dev/null 2>&1 || true
+          # 恢复输出文件
+          cp -r /tmp/mihomo_output/ output/
+          cp /tmp/mihomo_readme.md README.md
+          # 只提交 output/ 和 README.md
+          git add output/ README.md
+          git commit -m "${{ steps.commit_msg.outputs.message }}"
+          # 强制推送到 main 分支（保持单条提交历史）
+          git push -f origin main-tmp:main
 
       - name: 🗑️ Clean old workflow runs
         uses: Mattraks/delete-workflow-runs@v2
