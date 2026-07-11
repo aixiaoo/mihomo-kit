@@ -2,11 +2,11 @@
 
 > 自动同步上游、合并去重、去除失效的 mihomo 规则集仓库
 
-[![Sync Rules](https://github.com/aixiaoo/mihomo-kit/actions/workflows/sync.yml/badge.svg?style=flat-square)](https://github.com/aixiaoo/mihomo-kit/actions/workflows/sync.yml)
-[![GitHub stars](https://img.shields.io/github/stars/aixiaoo/mihomo-kit?style=flat-square&color=yellow)](https://github.com/aixiaoo/mihomo-kit/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/aixiaoo/mihomo-kit?style=flat-square&color=60c5ba)](https://github.com/aixiaoo/mihomo-kit/network/members)
-[![GitHub last commit](https://img.shields.io/github/last-commit/aixiaoo/mihomo-kit/main?style=flat-square&color=red)](https://github.com/aixiaoo/mihomo-kit/commits/main)
-[![GitHub License](https://img.shields.io/github/license/aixiaoo/mihomo-kit?style=flat-square)](https://github.com/aixiaoo/mihomo-kit/blob/main/LICENSE)
+[![Sync Rules](https://img.shields.io/github/actions/workflow/status/aixiaoo/mihomo-kit/sync.yml?style=flat-square&label=Sync%20Rules)](https://github.com/aixiaoo/mihomo-kit/actions/workflows/sync.yml)
+[![GitHub Stars](https://img.shields.io/github/stars/aixiaoo/mihomo-kit?style=flat-square&color=blue&label=Stars)](https://github.com/aixiaoo/mihomo-kit/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/aixiaoo/mihomo-kit?style=flat-square&color=60c5ba&label=Forks)](https://github.com/aixiaoo/mihomo-kit/network/members)
+[![GitHub Last commit](https://img.shields.io/github/last-commit/aixiaoo/mihomo-kit/main?style=flat-square&color=orange&label=Last%20Commit)](https://github.com/aixiaoo/mihomo-kit/commits/main)
+[![GitHub License](https://img.shields.io/github/license/aixiaoo/mihomo-kit?style=flat-square&label=License)](https://github.com/aixiaoo/mihomo-kit/blob/main/LICENSE)
 
 ## 项目简介
 
