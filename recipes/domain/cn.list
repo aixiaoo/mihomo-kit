@@ -2,4 +2,4 @@
 
 + list https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cn.list
 + list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.list
-+ list https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cn.txt
++ list https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt
