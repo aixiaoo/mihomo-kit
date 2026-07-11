@@ -1,6 +1,0 @@
-# ===== 精简直连域名规则配方 =====
-# 直连规则去除广告和代理，减少规则数量
-
-+ list direct.list
-- list ads.list
-- list proxy.list

@@ -35,20 +35,20 @@ rule-providers:
     path: ./ruleset/proxy.list
     interval: 86400
 
-  ads:
+  advertising:
     type: http
     behavior: domain
     format: text
-    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/ads/ads.list
-    path: ./ruleset/ads.list
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/advertising/advertising.list
+    path: ./ruleset/advertising.list
     interval: 86400
 
-  cn_ip:
+  china_ip:
     type: http
     behavior: ipcidr
     format: text
-    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/cn/cn-ip.list
-    path: ./ruleset/cn_ip.list
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/china/china-ip.list
+    path: ./ruleset/china_ip.list
     interval: 86400
 ```
 
@@ -66,8 +66,8 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/proxy/proxy.mrs
-    path: ./ruleset/proxy.mrs
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/advertising/advertising.mrs
+    path: ./ruleset/advertising.mrs
     interval: 86400
 ```
 
@@ -98,7 +98,7 @@ rule-providers:
 
 # 引用其他已生成的配方文件
 + list proxy.list
-- list ads.list
+- list advertising.list
 ```
 
 ### 运算逻辑
@@ -106,7 +106,7 @@ rule-providers:
 1. **`+` 操作**：将当前批次的所有规则合并到主规则集，使用 Trie 树去重（被已有规则覆盖的不再添加）
 2. **`-` 操作**：从主规则集中移除被当前批次规则覆盖的所有规则
 3. **块级子计算**：`[ ... ]` 内的规则先独立计算，计算结果作为整体参与外层运算
-4. **跨文件引用**：`proxy-lite.list` 可以引用 `proxy.list`（已先生成），实现规则叠加
+4. **跨文件引用**：配方可以引用其他已生成的配方文件（如 `streamingip.list` 引用 `netflix.list`），实现规则叠加
 
 ## 自定义规则
 
@@ -116,23 +116,20 @@ rule-providers:
 |------|------|
 | `proxy_add.list` | 追加到代理规则的域名 |
 | `proxy_del.list` | 从代理规则中排除的域名 |
-| `ads_add.list` | 追加到广告规则的域名 |
-| `ads_del.list` | 从广告规则中排除的域名 |
-| `direct_add.list` | 追加到直连规则的域名 |
-| `direct_del.list` | 从直连规则中排除的域名 |
+| `advertising_add.list` | 追加到广告规则的域名 |
+| `advertising_del.list` | 从广告规则中排除的域名 |
+| `emby_add.list` | 追加到 Emby 规则的域名 |
 | `whitelist.list` | 全局白名单（从所有广告规则中移除，防止误杀） |
 
 ## 上游规则源
 
 感谢以下优秀的规则源：
 
+- [MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat) - 从 geosite/geoip 转换的规则（主源）
+- [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script) - Clash/Surge 规则集（次源）
 - [DustinWin/ruleset_geodata](https://github.com/DustinWin/ruleset_geodata) - 预构建的 mihomo 规则集
 - [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules) - 经典 clash 规则
-- [MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat) - 从 geosite/geoip 转换的规则
-- [TG-Twilight/AWAvenue-Ads-Rule](https://github.com/TG-Twilight/AWAvenue-Ads-Rule) - 广告规则
-- [217heidai/adblockfilters](https://github.com/217heidai/adblockfilters) - 广告过滤规则
 - [Cats-Team/AdRules](https://github.com/Cats-Team/AdRules) - 广告规则
-- [wwqgtxx/clash-rules](https://github.com/wwqgtxx/clash-rules) - tld-not-cn 等规则
 - [gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip) - 中国 IP 段
 - [ispip.clang.cn](https://ispip.clang.cn) - 中国 IP 段
 - [metowolf/iplist](https://github.com/metowolf/iplist) - IP 列表

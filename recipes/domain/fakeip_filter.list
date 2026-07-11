@@ -1,0 +1,20 @@
+# ===== FakeIP 过滤域名配方 =====
+# 用于 mihomo dns.fake-ip-filter, 不参与 FakeIP 解析的域名
+# 私有地址 + 中国域名 + 网络探测 + 局域网反解 + 时间同步 + NTP + Speedtest
+
++ list https://raw.githubusercontent.com/DustinWin/ShellCrash/dev/public/fake_ip_filter.list
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ntp.list
++ list '+.lan'
++ list '+.local'
++ list '+.localdomain'
++ list '+.localhost'
++ list '+.in-addr.arpa'
++ list '+.ip6.arpa'
++ list '+.msftconnecttest.com'
++ list '+.msftncsi.com'
++ list 'time.*.com'
++ list 'time.*.gov'
++ list 'ntp.*.com'
+
+# + list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.list
+# + list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-speedtest.list

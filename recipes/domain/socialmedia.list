@@ -1,0 +1,5 @@
+# ===== SocialMedia 社交媒体域名规则配方 (非中国) =====
+# metacubex category-social-media-!cn
+
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-social-media-!cn.list
+- list '+.cn'

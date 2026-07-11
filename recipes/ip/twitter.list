@@ -1,0 +1,4 @@
+# ===== Twitter IP 段规则配方 =====
+# metacubex geoip/twitter
+
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.list

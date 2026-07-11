@@ -1,0 +1,9 @@
+# ===== EmbyIP Emby 服务器 IP 段规则配方 =====
+# metacubex geoip 无 emby 条目
+# Emby 服务器多为自部署,无通用上游 IP 段;此为占位配方
+# 用户可自行填入自部署 Emby 服务器 IP 段
+
++ list https://github.com/666OS/rules/raw/refs/heads/release/mihomo/ip/Emby.txt
+
+# 备选: 若出现 emby 相关 geoip 上游,在此启用:
+# + list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/emby.list

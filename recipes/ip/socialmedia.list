@@ -1,0 +1,6 @@
+# ===== SocialMediaIP 社交媒体 IP 段规则配方 =====
+# 聚合 metacubex geoip/twitter + geoip/facebook
+# 注: metacubex 无独立 social-media 类 geoip
+
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.list
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/facebook.list

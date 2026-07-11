@@ -1,3 +1,5 @@
-# ===== Telegram IP 段规则配方 =====
+# ===== TelegramIP IP 段规则配方 =====
+# metacubex geoip/telegram + 官方 CIDR (双源补全)
 
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.list
 + list https://core.telegram.org/resources/cidr.txt

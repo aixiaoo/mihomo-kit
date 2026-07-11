@@ -1,0 +1,16 @@
+# ===== Advertising 广告拦截域名规则配方 =====
+# metacubex category-ads-all + blackmatrix7 Advertising_Domain + Cats-Team DNS + 自定义 ±/白名单
+
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads-all.list
++ list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Domain.yaml
++ list https://raw.githubusercontent.com/Cats-Team/AdRules/refs/heads/main/dns.txt
+
++ list /custom/advertising_add.list
+- list /custom/advertising_del.list
+- list /custom/whitelist.list
+
+# 备选上游 (取消注释可启用):
+# + yaml https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.yaml
+# + yaml https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblockmihomolite.yaml
+# + list https://raw.githubusercontent.com/Cats-Team/AdRules/main/adrules.list
+# + yaml https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt

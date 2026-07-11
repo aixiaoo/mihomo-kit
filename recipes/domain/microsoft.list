@@ -1,0 +1,8 @@
+# ===== Microsoft 域名规则配方 (排除中国区) =====
+# metacubex microsoft - microsoft@cn
+
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.list
+- list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft@cn.list
+
+# 备选上游 (取消注释可启用):
+# + list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft_Domain.yaml

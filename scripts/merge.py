@@ -9,7 +9,7 @@
     - list <url>
   ]                              -> 块级子计算结束
 
-支持本地 .list 文件引用（如 proxy.list 引用 ads.list），按依赖顺序编译。
+支持本地 .list 文件引用（如 proxy.list 引用 advertising.list），按依赖顺序编译。
 """
 
 import os

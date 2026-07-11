@@ -1,0 +1,7 @@
+# ===== Crypto 加密货币域名规则配方 =====
+# metacubex category-cryptocurrency
+
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-cryptocurrency.list
+
+# 备选上游 (取消注释可启用):
+# + list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Crypto/Crypto.yaml

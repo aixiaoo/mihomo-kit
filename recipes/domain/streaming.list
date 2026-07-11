@@ -1,0 +1,16 @@
+# ===== Streaming 国际流媒体总集域名规则配方 =====
+# metacubex 减法策略 (category-media - category-media-cn - +.cn)
+
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-media.list
+- list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-media-cn.list
+- list '+.cn'
+
+# 备选方案 1 (blackmatrix7 现成,取消注释启用):
+# + list https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Domain.yaml
+
+# 备选方案 3 (metacubex 详细聚合,取消注释启用):
+# + list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.list
+# + list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.list
+# + list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/disney.list
+# + list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitch.list
+# + list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.list

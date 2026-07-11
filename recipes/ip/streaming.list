@@ -1,0 +1,9 @@
+# ===== StreamingIP 流媒体 IP 段规则配方 =====
+# 聚合 metacubex geoip/netflix (主源)
+# 注: 其他流媒体 (Disney+/Spotify 等) 多走 CDN,缺独立 geoip 段
+
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.list
+
+# 备选聚合 (取消注释可启用):
+# + list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.list
+# + list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.list

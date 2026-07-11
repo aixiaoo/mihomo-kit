@@ -1,0 +1,9 @@
+# ===== ChinaIP 中国 IP 段规则配方 =====
+# metacubex geoip/cn + 多源补全
+
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.list
++ list https://github.com/DustinWin/ruleset_geodata/raw/refs/heads/mihomo-ruleset/cnip.list
++ list https://gaoyifan.github.io/china-operator-ip/china46.txt
++ list https://ispip.clang.cn/all_cn_ipv46.txt
++ list https://ispip.clang.cn/all_cn_apnic.txt
++ list https://raw.githubusercontent.com/metowolf/iplist/master/data/special/china.txt

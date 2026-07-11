@@ -1,8 +1,0 @@
-# ===== 流媒体域名规则配方 =====
-# Netflix, YouTube 等 - 排除中国媒体
-
-+ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-media.list
-+ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.list
-+ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.list
-- list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-media-cn.list
-- list '+.cn'

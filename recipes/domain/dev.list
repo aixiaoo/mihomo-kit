@@ -1,0 +1,4 @@
+# ===== Dev 开发服务域名规则配方 =====
+# metacubex category-dev (含 GitHub/GitLab 等)
+
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-dev.list

@@ -1,0 +1,5 @@
+# ===== Games 游戏平台域名规则配方 (非中国) =====
+# metacubex category-games-!cn
+
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-games-!cn.list
+- list '+.cn'

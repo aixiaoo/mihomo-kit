@@ -1,0 +1,8 @@
+# ===== Apple 域名规则配方 (排除中国区) =====
+# metacubex apple - apple@cn
+
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.list
+- list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple@cn.list
+
+# 备选上游 (取消注释可启用):
+# + list https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/apple-cn.list

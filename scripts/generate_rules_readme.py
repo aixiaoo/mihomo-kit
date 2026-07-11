@@ -7,28 +7,47 @@ from datetime import datetime, timezone, timedelta
 
 BJ_TZ = timezone(timedelta(hours=8))
 
-# 规则描述
 RULE_DESC = {
     'domain': {
-        'proxy': '代理域名（GFWList + tld-not-cn）',
-        'direct': '直连域名（中国域名 + Apple/Microsoft/Games CN）',
-        'ads': '广告拦截（AWAvenue + adblockfilters + AdRules + Loyalsoldier）',
-        'cn': '中国域名',
-        'ai': 'AI 服务域名（ChatGPT, Claude, Gemini 等）',
-        'media': '流媒体（Netflix, YouTube 等，排除中国媒体）',
-        'google': 'Google 服务（排除中国区和 YouTube）',
-        'download': '下载相关（PikPak, Docker 等）',
-        'safe': '安全/金融（Twitter, PayPal, 加密货币, Stripe, Reddit）',
+        # Reject
+        'tracking': '追踪/埋点（blackmatrix7 Privacy）',
+        'advertising': '广告拦截（metacubex + blackmatrix7 + 自定义白名单）',
+        # Direct
+        'private': '私有/内网域名（blackmatrix7 Lan + DustinWin）',
+        'china': '中国域名（metacubex cn + DustinWin + Loyalsoldier）',
+        # Proxy 分流
         'telegram': 'Telegram',
-        'proxy-lite': '精简代理（proxy 去除细分类别）',
-        'direct-lite': '精简直连（direct 去除广告和代理）',
+        'tm': '即时通讯（metacubex category-communication）',
+        'socialmedia': '社交媒体非中国（metacubex category-social-media-!cn）',
+        'ai': 'AI 服务非中国（metacubex category-ai-!cn）',
+        'dev': '开发服务（metacubex category-dev）',
+        'emby': 'Emby 媒体服务器（metacubex category-emby）',
+        'youtube': 'YouTube',
+        'netflix': 'Netflix',
+        'spotify': 'Spotify',
+        'disney': 'Disney+',
+        'streaming': '国际流媒体总集（metacubex category-media 减 CN）',
+        'speedtest': 'Speedtest 测速（metacubex category-speedtest）',
+        'games': '游戏平台非中国（metacubex category-games-!cn）',
+        'crypto': '加密货币（metacubex category-cryptocurrency）',
+        'google': 'Google 排除中国区（metacubex google@!cn）',
+        'microsoft': 'Microsoft 排除中国区（metacubex microsoft - microsoft@cn）',
+        'facebook': 'Facebook',
+        'apple': 'Apple 排除中国区（metacubex apple - apple@cn）',
+        # 兜底
+        'proxy': '代理兜底（metacubex gfw + 自定义）',
     },
     'ip': {
-        'cn': '中国 IP 段',
-        'direct': '直连 IP 段（私有 IP + 中国 IP）',
-        'telegram': 'Telegram IP 段',
-        'google': 'Google IP 段',
-        'media': '流媒体 IP 段',
+        'private': '私有 IP 段（blackmatrix7 Lan + DustinWin + metacubex）',
+        'china': '中国 IP 段（metacubex + 多源补全）',
+        'telegram': 'Telegram IP 段（metacubex + 官方 CIDR）',
+        'socialmedia': '社交媒体 IP 段（metacubex twitter + facebook）',
+        'ai': 'AI 服务 IP 段（占位,缺上游）',
+        'netflix': 'Netflix IP 段',
+        'emby': 'Emby 服务器 IP 段（占位,自部署）',
+        'streaming': '流媒体 IP 段（metacubex netflix）',
+        'google': 'Google IP 段（metacubex + 官方 goog.txt）',
+        'proxy': '代理 IP 段（多服务 geoip 聚合）',
     },
 }
 

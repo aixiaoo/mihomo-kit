@@ -1,7 +1,11 @@
-# ===== AI 服务域名规则配方 =====
-# ChatGPT, Claude, Gemini 等 AI 服务 - 排除中国 AI
+# ===== AI 人工智能服务域名规则配方 (非中国) =====
+# metacubex category-ai-!cn (所有非中国 AI)
 
-+ list https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ai.list
-+ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list
 + list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.list
-- list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-cn.list
++ list https://github.com/DustinWin/ruleset_geodata/raw/refs/heads/mihomo-ruleset/ai.list
+
+# 备选方案 (取消注释可启用):
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-chat-!cn.list
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.list
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/anthropic.list
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list

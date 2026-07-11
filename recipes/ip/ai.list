@@ -1,0 +1,9 @@
+# ===== AIIP AI 服务 IP 段规则配方 =====
+# metacubex geoip 无 openai/anthropic 等独立条目
+# AI 服务多走 CDN/通用云段,主要依赖域名规则;IP 段目前空配方占位
+# 用户可自行补充自部署/已知 AI 服务 IP 段
+
++ list https://github.com/666OS/rules/raw/refs/heads/release/mihomo/ip/AI.txt
+
+# 备选: 若下游出现 openai/anthropic geoip 上游,在此启用:
+# + list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/openai.list

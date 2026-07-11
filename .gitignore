@@ -33,3 +33,6 @@ tmp/
 *.clean
 *.dead.list
 rules-staging/
+
+# 文档
+docs/

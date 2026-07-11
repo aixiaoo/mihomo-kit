@@ -1,3 +1,5 @@
-# ===== Google IP 段规则配方 =====
+# ===== GoogleIP Google IP 段规则配方 =====
+# metacubex geoip/google + Google 官方 IP 段
 
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.list
 + list https://www.gstatic.com/ipranges/goog.txt
