@@ -67,7 +67,7 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: 🔄 Phase 1+2: Merge & Validate
+      - name: "🔄 Phase 1+2 - Merge & Validate"
         env:
           DNS_CHECK: ${{ github.event.inputs.dns_check }}
           SAMPLE_RATIO: ${{ github.event.inputs.sample_ratio }}
@@ -113,7 +113,7 @@ jobs:
           sudo chmod +x "$BIN_PATH"
           mihomo -v
 
-      - name: 📦 Phase 3+4: Convert & Generate
+      - name: "📦 Phase 3+4 - Convert & Generate"
         if: github.event.inputs.skip_mrs != true
         run: |
           cd ${{ github.workspace }}
