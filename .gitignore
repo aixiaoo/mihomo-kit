@@ -32,3 +32,4 @@ tmp/
 # 生成文件的中间产物
 *.clean
 *.dead.list
+rules-staging/

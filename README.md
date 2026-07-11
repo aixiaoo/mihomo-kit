@@ -57,7 +57,7 @@ rule-providers:
     type: http
     behavior: domain
     format: text
-    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/main/output/domain/proxy.list
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/proxy/proxy.list
     path: ./ruleset/proxy.list
     interval: 86400
 
@@ -65,7 +65,7 @@ rule-providers:
     type: http
     behavior: domain
     format: text
-    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/main/output/domain/ads.list
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/ads/ads.list
     path: ./ruleset/ads.list
     interval: 86400
 
@@ -73,12 +73,16 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: text
-    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/main/output/ip/cn.list
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/cn/cn-ip.list
     path: ./ruleset/cn_ip.list
     interval: 86400
 ```
 
-也可以直接引用 `output/rule-providers.yaml` 获取全部规则提供者配置。
+也可以直接引用 `rule-providers.yaml` 获取全部规则提供者配置：
+
+```
+https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/rule-providers.yaml
+```
 
 ### 使用 MRS 二进制格式（更小更快）
 
@@ -88,7 +92,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/main/output/mrs/domain/proxy.mrs
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/proxy/proxy.mrs
     path: ./ruleset/proxy.mrs
     interval: 86400
 ```
@@ -208,7 +212,7 @@ mihomo-kit/
 
 ## License
 
-MIT
+GPL-3.0
 
 <!-- STATS:START -->
 ## 📊 规则统计

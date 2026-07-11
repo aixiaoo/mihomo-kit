@@ -123,6 +123,12 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           python scripts/update_readme.py || true
+          python scripts/generate_rules_readme.py || true
+
+      - name: 📦 Package rules (flat structure)
+        run: |
+          cd ${{ github.workspace }}
+          python scripts/package_rules.py
 
       - name: 📊 Generate summary
         run: |
@@ -139,26 +145,24 @@ jobs:
         run: |
           echo "message=🤖 auto-update: sync rules at $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
 
-      - name: ⬆️ Push output to main branch (orphan)
+      - name: ⬆️ Push to rules branch (orphan)
         run: |
           cd ${{ github.workspace }}
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          # 备份生成的输出文件
-          cp -r output/ /tmp/mihomo_output/
-          cp README.md /tmp/mihomo_readme.md
+          # 备份打包好的扁平结构文件
+          cp -r rules-staging/ /tmp/rules_staging/
           # 创建 orphan 分支（无历史记录）
-          git checkout --orphan main-tmp
+          git checkout --orphan rules-tmp
           # 清除所有追踪文件
           git rm -rf . > /dev/null 2>&1 || true
-          # 恢复输出文件
-          cp -r /tmp/mihomo_output/ output/
-          cp /tmp/mihomo_readme.md README.md
-          # 只提交 output/ 和 README.md
-          git add output/ README.md
+          # 恢复打包文件（扁平结构 + 精简 README）
+          cp -r /tmp/rules_staging/* .
+          # 提交所有文件
+          git add -A
           git commit -m "${{ steps.commit_msg.outputs.message }}"
-          # 强制推送到 main 分支（保持单条提交历史）
-          git push -f origin main-tmp:main
+          # 强制推送到 rules 分支（保持单条提交历史）
+          git push -f origin rules-tmp:rules
 
       - name: 🗑️ Clean old workflow runs
         uses: Mattraks/delete-workflow-runs@v2

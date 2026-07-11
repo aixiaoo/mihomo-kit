@@ -50,6 +50,8 @@ def main():
     total_mrs_kb = stats.get('total_mrs_size_kb', 0.0)
     generated_at = stats.get('generated_at', datetime.now(BJ_TZ).strftime('%Y-%m-%d %H:%M:%S'))
     
+    RAW_BASE = "https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules"
+
     # 生成统计表格
     def gen_table(title, stats_dict, rule_type, project_root):
         if not stats_dict:
@@ -68,14 +70,13 @@ def main():
             if not date_str:
                 date_str = datetime.now(BJ_TZ).strftime("%Y.%m.%d")
             
-            base_url = f"output/{rule_type}"
-            yaml_url = f"output/yaml/{rule_type}"
-            mrs_url = f"output/mrs/{rule_type}"
+            rule_dir = f"{RAW_BASE}/{name}"
+            ip_suffix = "-ip" if rule_type == 'ip' else ""
             
             lines += f"| {name} | {count} | {date_str} | "
-            lines += f"[.list](../../{base_url}/{name}.list) | "
-            lines += f"[.yaml](../../{yaml_url}/{name}.yaml) | "
-            lines += f"[.mrs](../../{mrs_url}/{name}.mrs) |\n"
+            lines += f"[.list]({rule_dir}/{name}{ip_suffix}.list) | "
+            lines += f"[.yaml]({rule_dir}/{name}{ip_suffix}.yaml) | "
+            lines += f"[.mrs]({rule_dir}/{name}{ip_suffix}.mrs) |\n"
         
         return lines
     

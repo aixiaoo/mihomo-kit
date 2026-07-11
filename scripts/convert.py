@@ -110,7 +110,7 @@ def generate_provider_yaml(domain_dir, ip_dir, output_path, base_url=None):
                 'format': 'text',
             }
             if base_url:
-                entry['url'] = f"{base_url}/output/domain/{f}"
+                entry['url'] = f"{base_url}/{name}/{f}"
             entry['path'] = f"./ruleset/{f}"
             entry['interval'] = 86400
             
@@ -130,8 +130,8 @@ def generate_provider_yaml(domain_dir, ip_dir, output_path, base_url=None):
                 'format': 'text',
             }
             if base_url:
-                entry['url'] = f"{base_url}/output/ip/{f}"
-            entry['path'] = f"./ruleset/{f}"
+                entry['url'] = f"{base_url}/{name}/{name}-ip.list"
+            entry['path'] = f"./ruleset/{name}-ip.list"
             entry['interval'] = 86400
             
             providers[key] = entry

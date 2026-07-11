@@ -168,11 +168,11 @@ def main():
                 if result.returncode == 0:
                     git_url = result.stdout.strip()
                     # 转换 git URL 为 raw URL
-                    # https://github.com/user/repo.git -> https://raw.githubusercontent.com/user/repo/main
+                    # https://github.com/user/repo.git -> https://raw.githubusercontent.com/user/repo/rules
                     if 'github.com' in git_url:
                         parts = git_url.replace('.git', '').split('/')
                         if len(parts) >= 5:
-                            repo_url = f"https://raw.githubusercontent.com/{parts[3]}/{parts[4]}/main"
+                            repo_url = f"https://raw.githubusercontent.com/{parts[3]}/{parts[4]}/rules"
             except Exception:
                 pass
         
