@@ -50,9 +50,10 @@ def main():
                         default='all', help='只运行指定阶段')
     args = parser.parse_args()
     
-    # 从环境变量读取配置
+    # 从环境变量读取配置（定时触发时环境变量可能为空字符串）
     dns_check = args.dns_check or os.environ.get('DNS_CHECK', 'false').lower() == 'true'
-    sample_ratio = float(os.environ.get('SAMPLE_RATIO', str(args.sample_ratio)))
+    env_sample_ratio = os.environ.get('SAMPLE_RATIO', '').strip()
+    sample_ratio = float(env_sample_ratio) if env_sample_ratio else args.sample_ratio
     no_mrs = args.no_mrs or os.environ.get('NO_MRS', 'false').lower() == 'true'
     mihomo_path = os.environ.get('MIHOMO_PATH', 'mihomo')
     
