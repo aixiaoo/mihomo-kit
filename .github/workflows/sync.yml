@@ -154,8 +154,9 @@ jobs:
           cp -r rules-staging/ /tmp/rules_staging/
           # 创建 orphan 分支（无历史记录）
           git checkout --orphan rules-tmp
-          # 清除所有追踪文件
+          # 清除所有文件（追踪 + 未追踪）
           git rm -rf . > /dev/null 2>&1 || true
+          git clean -fdx > /dev/null 2>&1 || true
           # 恢复打包文件（扁平结构 + 精简 README）
           cp -r /tmp/rules_staging/* .
           # 提交所有文件
