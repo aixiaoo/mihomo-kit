@@ -1,0 +1,10 @@
+# ===== Google 服务域名规则配方 =====
+# Google 全系 - 排除中国区和 YouTube(单独管理)
+
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-play.list
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.list
+- list [
++ list https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/google-cn.list
+- list '+.cn'
+]
+- list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.list

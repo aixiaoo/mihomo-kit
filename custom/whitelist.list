@@ -1,0 +1,20 @@
+# 全局白名单 - 从所有广告规则中移除这些域名（防止误杀）
+# 每行一个域名
+google.com
+googleapis.com
+googlevideo.com
+gstatic.com
+googleusercontent.com
+gvt1.com
+gvt2.com
+gvt3.com
+github.com
+githubusercontent.com
+githubassets.com
+microsoft.com
+microsoftonline.com
+msftncsi.com
+windowsupdate.com
+apple.com
+icloud.com
+cdn-apple.com

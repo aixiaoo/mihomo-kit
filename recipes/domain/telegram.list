@@ -1,0 +1,3 @@
+# ===== Telegram 域名规则配方 =====
+
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.list

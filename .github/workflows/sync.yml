@@ -1,0 +1,151 @@
+name: Sync Rules
+
+on:
+  schedule:
+    # 每天北京时间 03:00 (UTC 19:00)
+    - cron: '0 19 * * *'
+  push:
+    paths:
+      - 'recipes/**'
+      - 'custom/**'
+      - 'scripts/**'
+      - 'requirements.txt'
+      - '.github/workflows/sync.yml'
+  workflow_dispatch:
+    inputs:
+      dns_check:
+        description: '启用 DNS 失效域名检测（较慢）'
+        type: boolean
+        default: false
+      sample_ratio:
+        description: 'DNS 检测采样比例 (0.0-1.0)'
+        type: string
+        default: '0.1'
+      skip_mrs:
+        description: '跳过 MRS 二进制转换'
+        type: boolean
+        default: false
+
+env:
+  TZ: Asia/Shanghai
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+permissions:
+  contents: write
+
+jobs:
+  sync-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: 📦 Cache mihomo core
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/mihomo_core
+          key: ${{ runner.os }}-mihomo-core-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.os }}-mihomo-core-
+
+      - name: ⚙️ Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: 🔄 Phase 1+2: Merge & Validate
+        env:
+          DNS_CHECK: ${{ github.event.inputs.dns_check }}
+          SAMPLE_RATIO: ${{ github.event.inputs.sample_ratio }}
+        run: |
+          cd ${{ github.workspace }}
+          python scripts/main.py --phase merge --no-mrs
+          python scripts/main.py --phase validate --no-mrs \
+            ${{ github.event.inputs.dns_check == true && '--dns-check' || '' }} \
+            --sample-ratio ${{ github.event.inputs.sample_ratio || '0.1' }}
+
+      - name: 📦 Install mihomo core
+        if: github.event.inputs.skip_mrs != true
+        run: |
+          CACHE_DIR="$HOME/.cache/mihomo_core"
+          mkdir -p "$CACHE_DIR"
+          BIN_PATH="/usr/local/bin/mihomo"
+
+          LATEST_TAG=$(curl -s -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+            "https://api.github.com/repos/MetaCubeX/mihomo/releases/latest" | jq -r .tag_name)
+
+          if [ "$LATEST_TAG" == "null" ] || [ -z "$LATEST_TAG" ]; then
+            LATEST_TAG=$(curl -s -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+              "https://api.github.com/repos/MetaCubeX/mihomo/releases" | jq -r '.[0].tag_name')
+          fi
+
+          CACHED_VERSION=""
+          if [ -f "$CACHE_DIR/version.txt" ]; then
+            CACHED_VERSION=$(cat "$CACHE_DIR/version.txt")
+          fi
+
+          if [ "$CACHED_VERSION" == "$LATEST_TAG" ] && [ -f "$CACHE_DIR/mihomo" ]; then
+            echo "✅ Mihomo $LATEST_TAG found in cache."
+            sudo cp "$CACHE_DIR/mihomo" "$BIN_PATH"
+          else
+            echo "⬇️ Downloading Mihomo $LATEST_TAG..."
+            FILE_NAME="mihomo-linux-amd64-${LATEST_TAG}.gz"
+            curl -fsSL -o mihomo.gz "https://github.com/MetaCubeX/mihomo/releases/download/${LATEST_TAG}/${FILE_NAME}"
+            gzip -d "mihomo.gz"
+            cp mihomo "$CACHE_DIR/mihomo"
+            echo "$LATEST_TAG" > "$CACHE_DIR/version.txt"
+            sudo mv mihomo "$BIN_PATH"
+          fi
+          sudo chmod +x "$BIN_PATH"
+          mihomo -v
+
+      - name: 📦 Phase 3+4: Convert & Generate
+        if: github.event.inputs.skip_mrs != true
+        run: |
+          cd ${{ github.workspace }}
+          MIHOMO_PATH=mihomo python scripts/main.py --phase convert
+
+      - name: 📝 Update README stats
+        run: |
+          cd ${{ github.workspace }}
+          python scripts/update_readme.py || true
+
+      - name: 📊 Generate summary
+        run: |
+          cd ${{ github.workspace }}
+          if [ -f output/stats.json ]; then
+            echo "## 规则统计" >> $GITHUB_STEP_SUMMARY
+            echo '```json' >> $GITHUB_STEP_SUMMARY
+            cat output/stats.json >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: ⬆️ Commit and Push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "🤖 auto-update: sync rules at $(TZ=UTC-8 date +'%Y-%m-%d %H:%M')"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
+          file_pattern: "output/ README.md"
+
+      - name: 🗑️ Clean old workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 7
+          keep_minimum_runs: 10

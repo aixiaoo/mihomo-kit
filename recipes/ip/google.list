@@ -1,0 +1,3 @@
+# ===== Google IP 段规则配方 =====
+
++ list https://www.gstatic.com/ipranges/goog.txt

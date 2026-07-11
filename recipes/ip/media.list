@@ -1,0 +1,3 @@
+# ===== 流媒体 IP 段规则配方 =====
+
++ list https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.list
