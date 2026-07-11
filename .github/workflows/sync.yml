@@ -119,10 +119,9 @@ jobs:
           cd ${{ github.workspace }}
           MIHOMO_PATH=mihomo python scripts/main.py --phase convert
 
-      - name: 📝 Update README stats
+      - name: 📝 Generate rules branch README
         run: |
           cd ${{ github.workspace }}
-          python scripts/update_readme.py || true
           python scripts/generate_rules_readme.py || true
 
       - name: 📦 Package rules (flat structure)

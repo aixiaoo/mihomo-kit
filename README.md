@@ -2,8 +2,11 @@
 
 > 自动同步上游、合并去重、去除失效的 mihomo 规则集仓库
 
-[![Sync Rules](https://github.com/aixiaoo/mihomo-kit/actions/workflows/sync.yml/badge.svg)](https://github.com/aixiaoo/mihomo-kit/actions/workflows/sync.yml)
-[![License](https://img.shields.io/github/license/aixiaoo/mihomo-kit)](LICENSE)
+[![Sync Rules](https://github.com/aixiaoo/mihomo-kit/actions/workflows/sync.yml/badge.svg?style=flat-square)](https://github.com/aixiaoo/mihomo-kit/actions/workflows/sync.yml)
+[![GitHub stars](https://img.shields.io/github/stars/aixiaoo/mihomo-kit?style=flat-square&color=yellow)](https://github.com/aixiaoo/mihomo-kit/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/aixiaoo/mihomo-kit?style=flat-square&color=60c5ba)](https://github.com/aixiaoo/mihomo-kit/network/members)
+[![GitHub last commit](https://img.shields.io/github/last-commit/aixiaoo/mihomo-kit/main?style=flat-square&color=red)](https://github.com/aixiaoo/mihomo-kit/commits/main)
+[![GitHub License](https://img.shields.io/github/license/aixiaoo/mihomo-kit?style=flat-square)](https://github.com/aixiaoo/mihomo-kit/blob/main/LICENSE)
 
 ## 项目简介
 
@@ -17,35 +20,6 @@ mihomo-kit 是一个基于 GitHub Actions 自动维护的 [mihomo](https://githu
 - **失效检测** - 格式验证 + 可选 DNS 检测，移除不可解析的域名
 - **多格式输出** - 同时输出 `.list`（文本）、`.yaml`（mihomo YAML）、`.mrs`（mihomo 二进制）
 - **白名单保护** - 全局白名单防止误杀重要域名
-
-## 规则分类
-
-### 域名规则
-
-| 规则 | 说明 |
-|------|------|
-| `proxy` | 代理域名（GFWList + tld-not-cn） |
-| `direct` | 直连域名（中国域名 + Apple/Microsoft/Games CN） |
-| `ads` | 广告拦截（AWAvenue + adblockfilters + AdRules + Loyalsoldier） |
-| `cn` | 中国域名 |
-| `ai` | AI 服务域名（ChatGPT, Claude, Gemini 等，排除中国 AI） |
-| `media` | 流媒体（Netflix, YouTube 等，排除中国媒体） |
-| `google` | Google 服务（排除中国区和 YouTube） |
-| `download` | 下载相关（PikPak, Docker 等） |
-| `safe` | 安全/金融（Twitter, PayPal, 加密货币, Stripe, Reddit） |
-| `telegram` | Telegram |
-| `proxy-lite` | 精简代理（proxy 去除细分类别） |
-| `direct-lite` | 精简直连（direct 去除广告和代理） |
-
-### IP 规则
-
-| 规则 | 说明 |
-|------|------|
-| `cn` | 中国 IP 段 |
-| `direct` | 直连 IP 段（私有 IP + 中国 IP） |
-| `telegram` | Telegram IP 段 |
-| `google` | Google IP 段 |
-| `media` | 流媒体 IP 段 |
 
 ## 使用方法
 
@@ -192,59 +166,22 @@ mihomo-kit/
 │   └── ip/                       # IP 规则配方
 ├── custom/                        # 自定义增删规则
 ├── scripts/                       # Python 脚本
-│   ├── main.py                    # 主入口
+│   ├── main.py                    # 主入口（4 阶段流水线）
 │   ├── fetch.py                   # 上游规则拉取
 │   ├── merge.py                   # 合并去重（Trie 树 + IP collapse）
 │   ├── validate.py                # 失效检测
-│   ├── convert.py                 # 格式转换
+│   ├── convert.py                 # 格式转换 + rule-providers 生成
+│   ├── package_rules.py           # rules 分支扁平化打包
+│   ├── generate_rules_readme.py   # rules 分支 README 生成
 │   ├── update_readme.py           # README 统计更新
 │   └── utils.py                   # 工具函数
-├── output/                        # 生成的规则文件
-│   ├── domain/                    # .list 域名规则
-│   ├── ip/                        # .list IP 规则
-│   ├── yaml/                      # .yaml 格式
-│   ├── mrs/                       # .mrs 二进制格式
-│   ├── rule-providers.yaml        # mihomo rule-providers 配置
-│   └── stats.json                 # 统计信息
 ├── requirements.txt
+├── LICENSE
 └── README.md
 ```
+
+> `output/` 目录不在 `main` 分支中，由 Actions 自动生成并推送到 `rules` 分支。
 
 ## License
 
 GPL-3.0
-
-<!-- STATS:START -->
-## 📊 规则统计
-
-> 最后更新: 2026-07-11 09:03:27 | 总规则数: 741377 | MRS 总大小: 0.00 KB
-
-### 域名规则
-
-| 规则 | 条数 | 更新日期 | .list | .yaml | .mrs |
-|------|------|----------|-------|-------|------|
-| ads | 342909 | 2026.07.11 | [.list](../../output/domain/ads.list) | [.yaml](../../output/yaml/domain/ads.yaml) | [.mrs](../../output/mrs/domain/ads.mrs) |
-| ai | 176 | 2026.07.11 | [.list](../../output/domain/ai.list) | [.yaml](../../output/yaml/domain/ai.yaml) | [.mrs](../../output/mrs/domain/ai.mrs) |
-| cn | 113823 | 2026.07.11 | [.list](../../output/domain/cn.list) | [.yaml](../../output/yaml/domain/cn.yaml) | [.mrs](../../output/mrs/domain/cn.mrs) |
-| direct | 114113 | 2026.07.11 | [.list](../../output/domain/direct.list) | [.yaml](../../output/yaml/domain/direct.yaml) | [.mrs](../../output/mrs/domain/direct.mrs) |
-| direct-lite | 112171 | 2026.07.11 | [.list](../../output/domain/direct-lite.list) | [.yaml](../../output/yaml/domain/direct-lite.yaml) | [.mrs](../../output/mrs/domain/direct-lite.mrs) |
-| download | 13 | 2026.07.11 | [.list](../../output/domain/download.list) | [.yaml](../../output/yaml/domain/download.yaml) | [.mrs](../../output/mrs/domain/download.mrs) |
-| google | 627 | 2026.07.11 | [.list](../../output/domain/google.list) | [.yaml](../../output/yaml/domain/google.yaml) | [.mrs](../../output/mrs/domain/google.mrs) |
-| media | 1773 | 2026.07.11 | [.list](../../output/domain/media.list) | [.yaml](../../output/yaml/domain/media.yaml) | [.mrs](../../output/mrs/domain/media.mrs) |
-| proxy | 20006 | 2026.07.11 | [.list](../../output/domain/proxy.list) | [.yaml](../../output/yaml/domain/proxy.yaml) | [.mrs](../../output/mrs/domain/proxy.mrs) |
-| proxy-lite | 18404 | 2026.07.11 | [.list](../../output/domain/proxy-lite.list) | [.yaml](../../output/yaml/domain/proxy-lite.yaml) | [.mrs](../../output/mrs/domain/proxy-lite.mrs) |
-| safe | 1091 | 2026.07.11 | [.list](../../output/domain/safe.list) | [.yaml](../../output/yaml/domain/safe.yaml) | [.mrs](../../output/mrs/domain/safe.mrs) |
-| telegram | 21 | 2026.07.11 | [.list](../../output/domain/telegram.list) | [.yaml](../../output/yaml/domain/telegram.yaml) | [.mrs](../../output/mrs/domain/telegram.mrs) |
-
-
-### IP 规则
-
-| 规则 | 条数 | 更新日期 | .list | .yaml | .mrs |
-|------|------|----------|-------|-------|------|
-| cn | 8013 | 2026.07.11 | [.list](../../output/ip/cn.list) | [.yaml](../../output/yaml/ip/cn.yaml) | [.mrs](../../output/mrs/ip/cn.mrs) |
-| direct | 8031 | 2026.07.11 | [.list](../../output/ip/direct.list) | [.yaml](../../output/yaml/ip/direct.yaml) | [.mrs](../../output/mrs/ip/direct.mrs) |
-| google | 112 | 2026.07.11 | [.list](../../output/ip/google.list) | [.yaml](../../output/yaml/ip/google.yaml) | [.mrs](../../output/mrs/ip/google.mrs) |
-| media | 83 | 2026.07.11 | [.list](../../output/ip/media.list) | [.yaml](../../output/yaml/ip/media.yaml) | [.mrs](../../output/mrs/ip/media.mrs) |
-| telegram | 11 | 2026.07.11 | [.list](../../output/ip/telegram.list) | [.yaml](../../output/yaml/ip/telegram.yaml) | [.mrs](../../output/mrs/ip/telegram.mrs) |
-
-<!-- STATS:END -->
