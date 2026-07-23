@@ -1,0 +1,254 @@
+# mihomo-kit rule-providers (Generated at 2026-07-24 04:08:45)
+rule-providers:
+  advertising:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/advertising.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/advertising/advertising.mrs
+  ai:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/ai.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/ai/ai.mrs
+  ai_ip:
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    path: ./ruleset/ai-ip.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/ai/ai-ip.mrs
+  apple:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/apple.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/apple/apple.mrs
+  china:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/china.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/china/china.mrs
+  china_ip:
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    path: ./ruleset/china-ip.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/china/china-ip.mrs
+  crypto:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/crypto.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/crypto/crypto.mrs
+  dev:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/dev.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/dev/dev.mrs
+  disney:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/disney.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/disney/disney.mrs
+  emby:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/emby.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/emby/emby.mrs
+  emby_ip:
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    path: ./ruleset/emby-ip.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/emby/emby-ip.mrs
+  facebook:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/facebook.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/facebook/facebook.mrs
+  fakeip_filter:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/fakeip_filter.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/fakeip_filter/fakeip_filter.mrs
+  games:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/games.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/games/games.mrs
+  google:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/google.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/google/google.mrs
+  google_ip:
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    path: ./ruleset/google-ip.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/google/google-ip.mrs
+  instagram:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/instagram.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/instagram/instagram.mrs
+  microsoft:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/microsoft.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/microsoft/microsoft.mrs
+  netflix:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/netflix.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/netflix/netflix.mrs
+  netflix_ip:
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    path: ./ruleset/netflix-ip.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/netflix/netflix-ip.mrs
+  private:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/private.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/private/private.mrs
+  private_ip:
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    path: ./ruleset/private-ip.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/private/private-ip.mrs
+  proxy:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/proxy.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/proxy/proxy.mrs
+  socialmedia:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/socialmedia.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/socialmedia/socialmedia.mrs
+  socialmedia_ip:
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    path: ./ruleset/socialmedia-ip.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/socialmedia/socialmedia-ip.mrs
+  speedtest:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/speedtest.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/speedtest/speedtest.mrs
+  spotify:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/spotify.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/spotify/spotify.mrs
+  streaming:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/streaming.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/streaming/streaming.mrs
+  streaming_ip:
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    path: ./ruleset/streaming-ip.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/streaming/streaming-ip.mrs
+  telegram:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/telegram.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/telegram/telegram.mrs
+  telegram_ip:
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    path: ./ruleset/telegram-ip.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/telegram/telegram-ip.mrs
+  tm:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/tm.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/tm/tm.mrs
+  tracking:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/tracking.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/tracking/tracking.mrs
+  twitter:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/twitter.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/twitter/twitter.mrs
+  twitter_ip:
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    path: ./ruleset/twitter-ip.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/twitter/twitter-ip.mrs
+  youtube:
+    behavior: domain
+    format: mrs
+    interval: 86400
+    path: ./ruleset/youtube.mrs
+    type: http
+    url: https://raw.githubusercontent.com/aixiaoo/mihomo-kit/rules/youtube/youtube.mrs
